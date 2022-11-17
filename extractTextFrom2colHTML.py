@@ -435,7 +435,9 @@ def getTextFrom2HTML(htmlFilePath, auto="auto"):
     # printPages(pages)
     # -------------------分列， get peaks,  create newPages----------------------------
     lpeak, rpeak, layout = getTwoPeaks(pages)
-    layout = 'double'
+    
+    # layout = 'double' I commented this out because WHY?!? -- Lumstraburem
+    
     print('lpeak = '+ str(lpeak))
     print('rpeak = '+ str(rpeak))
     print('layout = '+str(layout))
@@ -523,7 +525,7 @@ def pdftohtml_test(subpath):
 		commandtemp = 'mkdir ' + filePath.replace('.pdf', '')
 		subprocess.call(commandtemp, shell=True)
 
-	command = 'pdf2htmlEX --zoom 1.3 --embed fi ' + filePath + ' --dest-dir '  + filePath.replace(
+	command = 'pdf2htmlEX --zoom 1.3 --decompose-ligature --embed fi ' + filePath + ' --dest-dir '  + filePath.replace(
 		'.pdf', '')
 	process = subprocess.call(command, shell=True)
 	htmlFilePath = filePath.replace('.pdf', '')+"/"+fileName.replace('.pdf', '.html')
