@@ -1,11 +1,8 @@
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "hello world"
+from extractTextFrom2colHTML import getTextFrom2HTML
+from main import pdftohtml_test
 
 
-if __name__ == "__main__":
-    app.run()
+def extract_text(filepath: str) -> list[str]:
+    htmlFilePath = pdftohtml_test(filepath)
+    text = getTextFrom2HTML(htmlFilePath)
+    return text
